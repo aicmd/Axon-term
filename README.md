@@ -68,7 +68,7 @@ Most terminal emulators are either powerful but ugly, or beautiful but shallow. 
 
 ## Installation
 
-> Axon is in active development. Pre-built binaries will be available in the [Releases](https://github.com/user/axon-term/releases) section soon.
+> Axon is in active development. Pre-built binaries will be available in the [Releases](https://github.com/aicmd/axon-term/releases) section soon.
 
 ### System Requirements
 
@@ -91,7 +91,7 @@ Most terminal emulators are either powerful but ugly, or beautiful but shallow. 
 
 ```bash
 # Clone
-git clone https://github.com/user/axon-term.git
+git clone https://github.com/aicmd/axon-term.git
 cd axon-term
 
 # Install frontend dependencies

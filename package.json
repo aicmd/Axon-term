@@ -3,11 +3,11 @@
   "private": true,
   "version": "0.1.0",
   "description": "Modern, secure SSH & SFTP terminal emulator built with Tauri and React",
-  "author": "yoke",
+  "author": "aicmd",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yoke/axon-term.git"
+    "url": "https://github.com/aicmd/axon-term.git"
   },
   "keywords": [
     "terminal",

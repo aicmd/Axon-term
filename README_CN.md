@@ -68,7 +68,7 @@
 
 ## 安装
 
-> Axon 正处于积极开发阶段。预构建的安装包将很快在 [Releases](https://github.com/user/axon-term/releases) 页面提供。
+> Axon 正处于积极开发阶段。预构建的安装包将很快在 [Releases](https://github.com/aicmd/axon-term/releases) 页面提供。
 
 ### 系统要求
 
@@ -91,7 +91,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/user/axon-term.git
+git clone https://github.com/aicmd/axon-term.git
 cd axon-term
 
 # 安装前端依赖
