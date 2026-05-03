@@ -1,5 +1,5 @@
 {
-  "name": "axon-term",
+  "name": "axon",
   "private": true,
   "version": "0.1.0",
   "description": "Modern, secure SSH & SFTP terminal emulator built with Tauri and React",
@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aicmd/axon-term.git"
+    "url": "https://github.com/aicmd/Axon-term.git"
   },
   "keywords": [
     "terminal",
