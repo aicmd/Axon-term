@@ -7,7 +7,8 @@ mod events;
 mod infrastructure;
 mod utils;
 
-use tauri::AppHandle;
+#[cfg(target_os = "macos")]
+use tauri::{Manager, Theme};
 
 #[cfg(target_os = "macos")]
 use window_vibrancy::{apply_vibrancy, NSVisualEffectMaterial};
