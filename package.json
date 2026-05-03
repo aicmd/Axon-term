@@ -1,0 +1,55 @@
+{
+  "name": "axon-term",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Modern, secure SSH & SFTP terminal emulator built with Tauri and React",
+  "author": "yoke",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yoke/axon-term.git"
+  },
+  "keywords": [
+    "terminal",
+    "ssh",
+    "sftp",
+    "tauri",
+    "react",
+    "developer-tools"
+  ],
+  "type": "module",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "tauri": "tauri",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2",
+    "@tauri-apps/plugin-opener": "^2",
+    "@xterm/addon-fit": "^0.11.0",
+    "@xterm/addon-serialize": "^0.14.0",
+    "@xterm/xterm": "^6.0.0",
+    "lucide-react": "^1.11.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-virtuoso": "^4.18.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.2.4",
+    "@tauri-apps/cli": "^2",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.6.0",
+    "jsdom": "^29.1.0",
+    "tailwindcss": "^4.2.4",
+    "typescript": "~5.8.3",
+    "vite": "^7.0.4",
+    "vitest": "^4.1.5"
+  }
+}

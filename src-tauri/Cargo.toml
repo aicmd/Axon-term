@@ -1,0 +1,37 @@
+[package]
+name = "Axon"
+version = "0.1.0"
+description = "Modern, secure SSH & SFTP terminal emulator built with Tauri and React"
+authors = ["yoke"]
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "2.0.3", features = [] }
+
+[dependencies]
+portable-pty = "0.8"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+ssh2 = "0.9"
+tauri = { version = "2.1.1", features = ["macos-private-api"] }
+thiserror = "2.0"
+tokio = { version = "1.42", features = ["rt-multi-thread", "macros", "sync"] }
+window-vibrancy = "0.5"
+chacha20poly1305 = "0.10"
+argon2 = "0.5"
+rand = "0.8"
+base64 = "0.22"
+reqwest = { version = "0.12", features = ["json"] }
+opener = "0.8.4"
+keyring = { version = "3", features = ["apple-native"] }
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
+
+[profile.release]
+opt-level = "z"      # Optimize for size
+lto = true           # Enable link-time optimization
+codegen-units = 1    # Maximize optimization possibilities
+panic = "abort"      # Remove stack unwinding code
+strip = true         # Strip symbols from binary 

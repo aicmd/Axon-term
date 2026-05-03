@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./assets/fonts/Inter-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('./assets/fonts/JetBrainsMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('./assets/fonts/JetBrainsMono-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* ── Tailwind v4 Theme ─────────────────────────────────────────────── */
+/* Maps CSS variable colors to Tailwind utilities like bg-main, text-accent, etc.
+   @theme inline keeps var() references in the output so runtime dark/light
+   switching via the .dark class still works. */
+@theme inline {
+  --color-main: var(--bg-main);
+  --color-sidebar: var(--bg-sidebar);
+  --color-textMain: var(--text-main);
+  --color-textMuted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-border: var(--border);
+  --color-hover: var(--hover);
+  --color-hoverDark: var(--hover-dark);
+  --color-terminal: var(--terminal-bg);
+
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* ── Light theme (default) ─────────────────────────────────────────── */
+:root {
+  --bg-main: #f8f9fa;
+  --bg-sidebar: #ffffff;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --accent: #3b82f6;
+  --success: #10b981;
+  --error: #ef4444;
+  --border: #e5e7eb;
+  --hover: #f3f4f6;
+  --hover-dark: #d1d5db;
+  --terminal-bg: #f3f4f6;
+  --hoverDark: #e5e7eb;
+  --sidebar-active: rgba(59, 130, 246, 0.1);
+  --sidebar-glow: rgba(59, 130, 246, 0.3);
+}
+
+/* ── Dark theme (Catppuccin Mocha) ─────────────────────────────────── */
+.dark {
+  --bg-main: #181825;
+  --bg-sidebar: #1E1E2E;
+  --text-main: #CDD6F4;
+  --text-muted: #A6ADC8;
+  --accent: #89B4FA;
+  --success: #A6E3A1;
+  --error: #F38BA8;
+  --border: #313244;
+  --hover: #313244;
+  --hover-dark: #45475a;
+  --terminal-bg: #11111b;
+  --hoverDark: #313244;
+  --sidebar-active: rgba(137, 180, 250, 0.1);
+  --sidebar-glow: rgba(137, 180, 250, 0.4);
+}
+
+/* ── Base styles ───────────────────────────────────────────────────── */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  margin: 0;
+  overflow: hidden;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ── Utility: hide scrollbar ───────────────────────────────────────── */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Custom animations ─────────────────────────────────────────────── */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slide-in-bottom {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-in {
+  animation-duration: 400ms;
+  animation-fill-mode: both;
+}
+.fade-in {
+  animation-name: fade-in;
+}
+.slide-in-from-bottom-2 {
+  animation-name: slide-in-bottom;
+}
+
+/* ── Tab scroll fade masks ─────────────────────────────────────────── */
+.tab-scroll-container {
+  -webkit-mask-image: linear-gradient(to right, black, black);
+  mask-image: linear-gradient(to right, black, black);
+  transition: -webkit-mask-image 0.2s ease, mask-image 0.2s ease;
+}
+.tab-scroll-container.mask-fade-left {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 24px);
+  mask-image: linear-gradient(to right, transparent 0%, black 24px);
+}
+.tab-scroll-container.mask-fade-right {
+  -webkit-mask-image: linear-gradient(to left, transparent 0%, black 24px);
+  mask-image: linear-gradient(to left, transparent 0%, black 24px);
+}
+.tab-scroll-container.mask-fade-left.mask-fade-right {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 24px, black calc(100% - 24px), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 24px, black calc(100% - 24px), transparent 100%);
+}
+
+/* Tab scroll arrow hover glow */
+.tab-scroll-arrow:hover {
+  box-shadow: 0 0 8px rgba(var(--accent), 0.15);
+}
+
+/* ── Xterm Custom Styling ──────────────────────────────────────────── */
+.xterm {
+  /* Remove internal padding that caused black bars */
+  padding: 0;
+}
+
+/* Ensure xterm doesn't render hardcoded black backgrounds */
+.xterm .xterm-viewport {
+  background-color: transparent !important;
+}
+
+/* Override xterm.js custom DOM scrollbar (xterm v5+) */
+.xterm .scrollbar.vertical {
+  width: 6px !important;
+  background: transparent !important;
+}
+
+.xterm .scrollbar.vertical .slider {
+  width: 6px !important;
+  background: var(--border) !important;
+  border-radius: 4px !important;
+  transition: background-color 0.15s ease !important;
+}
+
+.xterm .scrollbar.vertical .slider:hover,
+.xterm .scrollbar.vertical .slider.active {
+  background: var(--text-muted) !important;
+}
