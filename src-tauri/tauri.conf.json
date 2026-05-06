@@ -16,23 +16,16 @@
       {
         "label": "main",
         "title": "Axon",
-        "theme": "Light",
-        "width": 1024,
-        "height": 768,
-        "minWidth": 720,
-        "minHeight": 640,
         "decorations": true,
-        "transparent": false,
-        "shadow": true,
-        "skipTaskbar": true,
         "titleBarStyle": "Overlay",
+        "transparent": true,
+        "shadow": true,
         "trafficLightPosition": {
           "x": 14,
           "y": 24
         },
         "hiddenTitle": true,
-        "resizable": true,
-        "dragDropEnabled": false
+        "resizable": true
       }
     ],
     "security": {
@@ -41,13 +34,18 @@
   },
   "bundle": {
     "active": true,
-    "targets": ["dmg", "nsis", "msi", "deb", "appimage"],
+    "targets": ["nsis", "msi", "dmg", "deb", "appimage"],
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
       "icons/128x128@2x.png",
       "icons/icon.icns",
       "icons/icon.ico"
-    ]
+    ],
+    "windows": {
+      "nsis": {
+        "createPortable": true
+      }
+    }
   }
 }
