@@ -42,10 +42,8 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ],
-    "windows": {
-      "nsis": {
-        "createPortable": true
-      }
+    "nsis": {
+      "createPortable": true
     }
   }
 }
