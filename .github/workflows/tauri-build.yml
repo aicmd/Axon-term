@@ -46,15 +46,8 @@ jobs:
       - name: install frontend dependencies
         run: pnpm install
 
-      - name: build and compress macos app (macos only)
-        if: matrix.platform == 'macos-latest'
-        run: |
-          pnpm tauri build
-          cd src-tauri/target/release/bundle/macos
-          tar -czf ../axon_macos_x64.app.tar.gz axon.app
-          cd ../../../../../
-
       - uses: tauri-apps/tauri-action@v0
+        id: tauri_build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -63,6 +56,16 @@ jobs:
           releaseBody: "See the assets below to download the latest version of Axon."
           releaseDraft: true
           prerelease: false
-          # Use --no-bundle for macos because we already built it and want to avoid rebuilding
-          # tauri-action will still pick up the files in the bundle directory
-          args: ${{ matrix.platform == 'macos-latest' && '--no-bundle' || matrix.args }}
+          args: ${{ matrix.args }}
+
+      - name: upload macos portable (macos only)
+        if: matrix.platform == 'macos-latest'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # The app is built in the previous step
+          cd src-tauri/target/release/bundle/macos
+          tar -czf ../../../../axon_macos_x64.app.tar.gz axon.app
+          cd ../../../../
+          gh release upload v${{ steps.tauri_build.outputs.appVersion }} axon_macos_x64.app.tar.gz --repo ${{ github.repository }} --clobber
+
