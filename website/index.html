@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axon | The Modern Terminal for Engineers</title>
+  <meta name="description"
+    content="A powerful, native SSH & SFTP client built with Rust and React. Fast, secure, and beautiful.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="translations.js"></script>
+</head>
+
+<body>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <header>
+    <div class="container">
+      <div class="nav-container">
+        <a href="#" class="logo">
+          <i data-lucide="terminal"></i>
+          Axon <span class="version-badge">v0.1.0</span>
+        </a>
+        <nav>
+          <ul>
+            <li><a href="#features" data-i18n="nav_features">Features</a></li>
+            <li><a href="#security" data-i18n="nav_security">Security</a></li>
+            <li><a href="#performance" data-i18n="nav_performance">Performance</a></li>
+            <li><a href="https://github.com/aicmd/axon-term">GitHub</a></li>
+          </ul>
+        </nav>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <select id="lang-select" class="lang-switcher">
+            <option value="en">EN</option>
+            <option value="zh">ZH</option>
+          </select>
+          <a href="#" class="btn btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;"
+            data-i18n="btn_download" aria-label="Download Axon Terminal">Download</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="reveal">
+          <span class="badge" data-i18n="hero_badge">Early Access Available</span>
+          <h1 data-i18n="hero_title">Native Speed.<br>Cloud Power.</h1>
+          <p data-i18n="hero_desc">The modern SSH & SFTP workstation for engineers who demand elegance without
+            sacrificing performance. Built with Rust.</p>
+        </div>
+
+        <div class="cta-group reveal delay-1">
+          <a href="#" class="btn btn-primary" aria-label="Download for your OS">
+            <i data-lucide="download"></i>
+            <span data-i18n="btn_download_macos">Download for macOS</span>
+          </a>
+          <a href="https://github.com/aicmd/axon-term" class="btn btn-secondary" aria-label="View on GitHub">
+            <i data-lucide="github"></i>
+            <span data-i18n="btn_github">Star on GitHub</span>
+          </a>
+        </div>
+
+        <div class="platforms-row reveal delay-2">
+          <span data-i18n="hero_platforms">Supports macOS, Windows, and Linux</span>
+          <div class="platform-icons">
+            <i data-lucide="apple"></i>
+            <i data-lucide="monitor"></i>
+            <i data-lucide="terminal"></i>
+          </div>
+        </div>
+
+        <div class="hero-image-container reveal delay-2">
+          <img src="assets/hero.png" alt="Axon Terminal actual UI showing host management and server cards"
+            class="hero-image">
+        </div>
+
+        <div class="scroll-indicator reveal delay-3">
+          <i data-lucide="chevron-down"></i>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="badge" style="color: var(--purple);" data-i18n="features_badge">Everything Built-in</span>
+          <h2 data-i18n="features_title">A workstation, not just a terminal.</h2>
+          <p data-i18n="features_desc">Axon combines a world-class terminal with professional file management, security, and monitoring.</p>
+        </div>
+
+        <div class="bento-grid">
+          <!-- Terminal (Large) -->
+          <div class="bento-card col-span-2 row-span-2 reveal delay-1">
+            <div class="bento-header">
+              <i data-lucide="terminal-square"></i>
+              <h3 data-i18n="b_term_title">Terminal Experience</h3>
+            </div>
+            <ul class="bento-list">
+              <li><strong data-i18n="b_term_1_t">Multi-pane sessions</strong><span data-i18n="b_term_1_d">Split horizontally or vertically, work across servers simultaneously.</span></li>
+              <li><strong data-i18n="b_term_2_t">Broadcast mode</strong><span data-i18n="b_term_2_d">Send a single command to all open panes at once.</span></li>
+              <li><strong data-i18n="b_term_3_t">GPU-accelerated</strong><span data-i18n="b_term_3_d">Smooth 60fps via xterm.js WebGL.</span></li>
+              <li><strong data-i18n="b_term_4_t">Auto-reconnect</strong><span data-i18n="b_term_4_d">Automatically restores SSH sessions after network drops.</span></li>
+            </ul>
+          </div>
+
+          <!-- SFTP (Vertical) -->
+          <div class="bento-card row-span-2 reveal delay-2">
+            <div class="bento-header">
+              <i data-lucide="folder-sync"></i>
+              <h3 data-i18n="b_sftp_title">SFTP File Manager</h3>
+            </div>
+            <ul class="bento-list">
+              <li><strong data-i18n="b_sftp_1_t">Dual-pane browser</strong><span data-i18n="b_sftp_1_d">Navigate local and remote filesystems side by side.</span></li>
+              <li><strong data-i18n="b_sftp_2_t">Drag & drop</strong><span data-i18n="b_sftp_2_d">Upload and download files with visual progress.</span></li>
+              <li><strong data-i18n="b_sftp_3_t">Transfer queue</strong><span data-i18n="b_sftp_3_d">Batch operations with real-time status tracking.</span></li>
+            </ul>
+          </div>
+
+          <!-- Security (Vertical) -->
+          <div class="bento-card row-span-2 reveal delay-3">
+            <div class="bento-header">
+              <i data-lucide="shield-check"></i>
+              <h3 data-i18n="b_sec_title">Uncompromising Security</h3>
+            </div>
+            <ul class="bento-list">
+              <li><strong data-i18n="b_sec_1_t">End-to-end encryption</strong><span data-i18n="b_sec_1_d">All sensitive data protected with XChaCha20-Poly1305.</span></li>
+              <li><strong data-i18n="b_sec_2_t">Key derivation</strong><span data-i18n="b_sec_2_d">Argon2id password hashing.</span></li>
+              <li><strong data-i18n="b_sec_3_t">Flexible storage</strong><span data-i18n="b_sec_3_d">OS Keychain or local encrypted file.</span></li>
+              <li><strong data-i18n="b_sec_4_t">No telemetry</strong><span data-i18n="b_sec_4_d">Zero data collection, everything stays local.</span></li>
+            </ul>
+          </div>
+
+          <!-- Cloud Sync (Horizontal) -->
+          <div class="bento-card col-span-2 reveal delay-1">
+            <div class="bento-header">
+              <i data-lucide="cloud"></i>
+              <h3 data-i18n="b_cloud_title">Cloud Sync</h3>
+            </div>
+            <ul class="bento-list">
+              <li><strong data-i18n="b_cloud_1_t">GitHub Gist backup</strong><span data-i18n="b_cloud_1_d">Encrypted host configs synced via private Gists.</span></li>
+              <li><strong data-i18n="b_cloud_2_t">Device Flow auth</strong><span data-i18n="b_cloud_2_d">Secure OAuth without exposing client secrets.</span></li>
+            </ul>
+          </div>
+
+          <!-- Monitoring (Small) -->
+          <div class="bento-card reveal delay-2">
+            <div class="bento-header">
+              <i data-lucide="activity"></i>
+              <h3 data-i18n="b_mon_title">Monitoring</h3>
+            </div>
+            <ul class="bento-list">
+              <li><strong data-i18n="b_mon_1_t">Live metrics</strong><span data-i18n="b_mon_1_d">Real-time CPU, memory, disk, and network stats.</span></li>
+              <li><strong data-i18n="b_mon_2_t">Shell history</strong><span data-i18n="b_mon_2_d">Import and browse remote command history.</span></li>
+            </ul>
+          </div>
+
+          <!-- Interface (Small) -->
+          <div class="bento-card reveal delay-3">
+            <div class="bento-header">
+              <i data-lucide="layout-template"></i>
+              <h3 data-i18n="b_ui_title">Interface</h3>
+            </div>
+            <ul class="bento-list">
+              <li><strong data-i18n="b_ui_1_t">Global search</strong><span data-i18n="b_ui_1_d">Cmd+K command palette for hosts, snippets, and files.</span></li>
+              <li><strong data-i18n="b_ui_2_t">Snippet manager</strong><span data-i18n="b_ui_2_d">Save, organize, and quickly execute common commands.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="performance" class="architecture">
+      <div class="container">
+        <div class="arch-content">
+          <div class="arch-text">
+            <span class="badge" style="color: #10b981;" data-i18n="arch_badge">Architecture</span>
+            <h2 data-i18n="arch_title">Native performance,<br>zero Electron.</h2>
+            <p data-i18n="arch_desc">Axon is built with <strong>Tauri v2</strong> and <strong>Rust</strong>. It consumes
+              90% less memory than Electron-based terminals while delivering smoother 60fps rendering via xterm.js
+              WebGL.</p>
+
+            <div class="arch-stats">
+              <div class="stat-item">
+                <h4>
+                  < 40MB</h4>
+                    <p data-i18n="stat_memory">Idle Memory Usage</p>
+              </div>
+              <div class="stat-item">
+                <h4>60 FPS</h4>
+                <p data-i18n="stat_fps">Hardware Acceleration</p>
+              </div>
+            </div>
+
+            <div class="size-stats reveal delay-3">
+              <div class="size-item">
+                <i data-lucide="apple"></i>
+                <span data-i18n="stat_size_macos">macOS: ~3.9MB</span>
+              </div>
+              <div class="size-item">
+                <i data-lucide="monitor"></i>
+                <span data-i18n="stat_size_windows">Windows: ~4.5MB</span>
+              </div>
+              <div class="size-item">
+                <i data-lucide="terminal"></i>
+                <span data-i18n="stat_size_linux">Linux: ~2.5MB</span>
+              </div>
+            </div>
+          </div>
+          <div class="arch-visual">
+            <div class="feature-card"
+              style="padding: 3rem; background: linear-gradient(135deg, var(--surface), transparent); border-style: dashed;">
+              <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <div style="height: 12px; width: 80%; background: var(--surface-border); border-radius: 6px;"></div>
+                <div style="height: 12px; width: 60%; background: var(--surface-border); border-radius: 6px;"></div>
+                <div style="height: 12px; width: 90%; background: var(--accent); opacity: 0.3; border-radius: 6px;">
+                </div>
+                <div style="height: 12px; width: 40%; background: var(--surface-border); border-radius: 6px;"></div>
+              </div>
+              <div style="margin-top: 3rem; display: flex; justify-content: center;">
+                <i data-lucide="cpu" style="width: 64px; height: 64px; color: var(--accent); opacity: 0.5;"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-info">
+          <div class="logo">Axon</div>
+          <p data-i18n="footer_desc">The modern SSH & SFTP client for the next generation of engineers.</p>
+        </div>
+        <div class="footer-links">
+          <h4 data-i18n="footer_product">Product</h4>
+          <ul>
+            <li><a href="#features" data-i18n="nav_features">Features</a></li>
+            <li><a href="#security" data-i18n="nav_security">Security</a></li>
+            <li><a href="#performance" data-i18n="nav_performance">Performance</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4 data-i18n="footer_community">Community</h4>
+          <ul>
+            <li><a href="https://github.com/aicmd/axon-term">GitHub</a></li>
+            <li><a href="https://github.com/aicmd/axon-term/issues">Issues</a></li>
+            <li><a href="https://github.com/aicmd/axon-term/releases">Releases</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p data-i18n="footer_copy">&copy; 2026 Axon Terminal. Built by yoke with Rust & React.</p>
+        <p data-i18n="footer_license">Released under MIT License</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
