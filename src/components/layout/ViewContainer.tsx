@@ -21,7 +21,7 @@ interface ViewContainerProps {
   activeGlobalView: ViewMode;
   tabs: Tab[];
   hosts: Host[];
-  openSession: (hostId: string | null, mode: ViewMode) => void;
+  openSession: (hostOrId: string | Host | null, mode: ViewMode) => void;
   handleAddHost: () => void;
   handleEditHost: (hostId: string) => void;
   updateTabTitle: (tabId: string, title: string) => void;

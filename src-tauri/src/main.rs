@@ -1,3 +1,5 @@
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+
 mod app;
 mod application;
 mod commands;
@@ -7,11 +9,7 @@ mod events;
 mod infrastructure;
 mod utils;
 
-#[cfg(target_os = "macos")]
-use tauri::{Manager, Theme};
-
-#[cfg(target_os = "macos")]
-use window_vibrancy::{apply_vibrancy, NSVisualEffectMaterial};
+use tauri::Manager;
 
 fn main() {
     tauri::Builder::default()
@@ -57,11 +55,22 @@ fn main() {
         .setup(|app| {
             app::state::initialize(app.handle().clone())?;
 
-            #[cfg(target_os = "macos")]
             if let Some(window) = app.get_webview_window("main") {
-                let _ = window.set_theme(Some(Theme::Dark));
-                apply_vibrancy(&window, NSVisualEffectMaterial::Sidebar, None, Some(18.0))
-                    .expect("window-vibrancy: failed to apply vibrancy");
+                // Windows specific setup: Hide decorations (title bar)
+                #[cfg(target_os = "windows")]
+                {
+                    let _ = window.set_decorations(false);
+                }
+
+                // macOS specific setup: Apply vibrancy and theme
+                #[cfg(target_os = "macos")]
+                {
+                    use tauri::Theme;
+                    use window_vibrancy::{apply_vibrancy, NSVisualEffectMaterial};
+                    
+                    let _ = window.set_theme(Some(Theme::Dark));
+                    let _ = apply_vibrancy(&window, NSVisualEffectMaterial::Sidebar, None, Some(18.0));
+                }
             }
 
             Ok(())

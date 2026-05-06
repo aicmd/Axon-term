@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { HostEditorModal } from './components/HostEditorModal';
 import { RightDrawer } from './components/RightDrawer';
-import { ViewMode, Tab, ConnectionState } from './types';
+import { ViewMode, Tab, ConnectionState, Host } from './types';
 import { useI18n } from './I18nContext';
 import { useHosts } from './HostContext';
 import { useSettings } from './SettingsContext';
@@ -104,23 +104,39 @@ const App: React.FC = () => {
     });
   }, [activeTabId]);
 
-  const openSession = React.useCallback((hostId: string | null, mode: ViewMode) => {
+  const openSession = React.useCallback((hostOrId: string | Host | null, mode: ViewMode) => {
     const startTime = Date.now();
-    if (hostId) {
-      const host = hosts.find(h => h.id === hostId);
-      if (host) {
-        const newTabId = `session_${startTime}`;
-        setTabs(prev => [...prev, { id: newTabId, hostId, title: host.name, viewMode: mode, startTime, state: ConnectionState.CONNECTING }]);
-        setActiveTabId(newTabId);
-        return;
+    let targetHost: Host | undefined;
+
+    if (hostOrId) {
+      if (typeof hostOrId === 'string') {
+        targetHost = hosts.find(h => h.id === hostOrId);
+      } else {
+        targetHost = hostOrId;
       }
     }
 
-    // Local session fallback
-    const newTabId = `local_${startTime}`;
-    const title = mode === ViewMode.SFTP ? t('sftp') : t('localTerminal');
-    setTabs(prev => [...prev, { id: newTabId, hostId: '', title, viewMode: mode, startTime, state: ConnectionState.CONNECTED }]);
-    setActiveTabId(newTabId);
+    if (targetHost) {
+      const newTabId = `session_${startTime}`;
+      setTabs(prev => [...prev, {
+        id: newTabId,
+        hostId: targetHost!.id,
+        title: targetHost!.name,
+        viewMode: mode,
+        startTime,
+        state: ConnectionState.CONNECTING
+      }]);
+      setActiveTabId(newTabId);
+      return;
+    }
+
+    // Local session fallback (only if hostOrId was explicitly null or not found)
+    if (hostOrId === null || (typeof hostOrId === 'string' && hostOrId === '')) {
+      const newTabId = `local_${startTime}`;
+      const title = mode === ViewMode.SFTP ? t('sftp') : t('localTerminal');
+      setTabs(prev => [...prev, { id: newTabId, hostId: '', title, viewMode: mode, startTime, state: ConnectionState.CONNECTED }]);
+      setActiveTabId(newTabId);
+    }
   }, [hosts, t]);
 
   const updateTabTitle = React.useCallback((tabId: string, title: string) => {

@@ -60,7 +60,7 @@ interface SidebarProps {
   hosts: Host[];
   tabs: Tab[];
   onNavigate: (view: ViewMode) => void;
-  onOpenSession: (hostId: string | null, mode: ViewMode) => void;
+  onOpenSession: (hostOrId: string | Host | null, mode: ViewMode) => void;
   onSelectTab?: (tabId: string) => void;
   onAddHost: () => void;
 }

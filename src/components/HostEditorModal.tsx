@@ -7,7 +7,7 @@ import { Host, CreateHostInput, ViewMode } from '../types';
 interface HostEditorModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onConnect?: (hostId: string, mode: ViewMode) => void;
+  onConnect?: (hostOrId: string | Host, mode: ViewMode) => void;
   hostId?: string;
 }
 
@@ -117,7 +117,7 @@ export const HostEditorModal: React.FC<HostEditorModalProps> = ({ isOpen, onClos
       onClose();
 
       if (onConnect && savedHost.id) {
-        onConnect(savedHost.id, ViewMode.TERMINAL);
+        onConnect(savedHost, ViewMode.TERMINAL);
       }
     } catch (err: any) {
       console.error('Failed to save host:', err);

@@ -3,10 +3,10 @@ import { Search, Server, Code, List, Settings, X, Command } from 'lucide-react';
 import { useHosts } from '../HostContext';
 import { useSnippets } from '../SnippetContext';
 import { useI18n } from '../I18nContext';
-import { ViewMode } from '../types';
+import { ViewMode, Host } from '../types';
 
 interface GlobalSearchProps {
-  onOpenSession: (hostId: string, mode: ViewMode) => void;
+  onOpenSession: (hostOrId: string | Host | null, mode: ViewMode) => void;
   onNavigate: (view: ViewMode) => void;
   onClose?: () => void;
 }

@@ -7,7 +7,7 @@ import { getStatusColor } from '../utils/statusUtils';
 import { UbuntuLogo, DebianLogo, CentOSLogo, RedHatLogo, AppleLogo, WindowsLogo, RaspberryPiLogo } from './icons/OsLogo';
 
 interface HostListViewProps {
-  onConnect: (hostId: string, mode: ViewMode) => void;
+  onConnect: (hostOrId: string | Host, mode: ViewMode) => void;
   onEdit: (hostId: string) => void;
   onAdd: () => void;
   tabs: Tab[];

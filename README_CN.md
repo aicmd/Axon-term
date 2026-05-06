@@ -173,6 +173,18 @@ axon-term/
 | 密钥存储 | 系统钥匙串 / 本地加密文件 |
 | 图标     | Lucide React |
 
+## 🛡️ 安全与故障排除
+
+### macOS 提示“已损坏，无法打开”
+由于 Axon 目前处于早期开发阶段，尚未购买 Apple 开发者证书进行签名，macOS 可能会提示应用“已损坏”。您可以通过在终端执行以下命令来修复：
+
+```bash
+sudo xattr -rd com.apple.quarantine /Applications/axon.app
+```
+
+### Windows SmartScreen
+在 Windows 上，您可能会看到“Windows 已保护您的电脑”提示。请点击**“更多信息”**，然后选择**“仍要运行”**。
+
 ## 参与贡献
 
 请参阅 [CONTRIBUTING.md](CONTRIBUTING.md) 了解贡献指南。

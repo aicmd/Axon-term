@@ -173,6 +173,18 @@ axon-term/
 | Keystore   | OS Keychain / encrypted local file |
 | Icons      | Lucide React |
 
+## 🛡️ Security & Troubleshooting
+
+### macOS "App is damaged" Warning
+Since Axon is currently in early development and not yet signed by an Apple Developer certificate, macOS may show a warning saying the app is "damaged". You can fix this by running the following command in your terminal:
+
+```bash
+sudo xattr -rd com.apple.quarantine /Applications/axon.app
+```
+
+### Windows SmartScreen
+On Windows, you might see a "Windows protected your PC" popup. Click **"More info"** and then **"Run anyway"**.
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
