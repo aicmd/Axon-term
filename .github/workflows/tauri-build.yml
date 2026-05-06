@@ -63,9 +63,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # The app is built in the previous step
           cd src-tauri/target/release/bundle/macos
           tar -czf ../../../../axon_macos_x64.app.tar.gz axon.app
           cd ../../../../
           gh release upload v${{ steps.tauri_build.outputs.appVersion }} axon_macos_x64.app.tar.gz --repo ${{ github.repository }} --clobber
+
+      - name: upload windows portable (windows only)
+        if: matrix.platform == 'windows-latest'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          copy src-tauri\target\release\axon.exe axon_windows_x64_portable.exe
+          gh release upload v${{ steps.tauri_build.outputs.appVersion }} axon_windows_x64_portable.exe --repo ${{ github.repository }} --clobber
 
